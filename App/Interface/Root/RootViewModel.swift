@@ -43,19 +43,23 @@ class RootViewModel: RootViewModelType, RootViewModelInputType, RootViewModelOut
     init(stateMachine: AppStateMachine) {
         self.stateMachine = stateMachine
         
-        bindInputs()
+        bind()
     }
     
-    private func bindInputs() {
+    private func bind() {
+        // inputs
+        
         viewDidAppear
-//            .take(1)
+            .take(1)
             .map { AppAction.load }
             .bind(to: stateMachine.action)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindStateMachineOutputs() {
-        stateMachine.state.asObservable()
+        
+        // outputs
+        
+        stateMachine
+            .state
+            .asObservable()
             .subscribe(onNext: {
                 self.handleState($0)
             })

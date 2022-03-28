@@ -19,7 +19,6 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        bindViewModelInputs()
         bindViewModelOutputs()
     }
     
@@ -27,8 +26,6 @@ class RootViewController: UIViewController {
         super.viewDidAppear(animated)
         viewModel.inputs.viewDidAppear.accept(())
     }
-    
-    private func bindViewModelInputs() {}
     
     private func bindViewModelOutputs() {
         viewModel

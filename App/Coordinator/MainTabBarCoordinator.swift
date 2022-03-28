@@ -30,7 +30,7 @@ class MainTabBarCoorinator {
         
         mainTabBarVC.modalPresentationStyle = .overFullScreen
         
-        parent.present(mainTabBarVC, animated: true, completion: nil)
+        parent.present(mainTabBarVC, animated: false, completion: nil)
     }
     
 }
